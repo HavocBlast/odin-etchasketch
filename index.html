@@ -5,10 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch-A-Sketch</title>
-    <link defer rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
-  <body onload="createGrid(8, 8)">
-    <script src="scripts/app.js"></script>
+  <body onload="createGrid()">
+    <script defer src="scripts/app.js"></script>
+    <h1>Etch-A-Sketch</h1>
+    <div class="grid-commands">
+      <label for="rows">Rows:</label>
+      <input type="number" name="rows" id="rows" />
+      <label for="columns">Columns:</label>
+      <input type="number" name="columns" id="columns" />
+      <button onclick="createGrid()">Build</button>
+    </div>
     <main>
       <div class="grid"></div>
     </main>
