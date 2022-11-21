@@ -3,10 +3,11 @@ function createGridItem() {
   // item.style.border = '1px solid black';
   item.className = 'item';
   item.addEventListener('mouseenter', (event) => {
-    event.target.style.backgroundColor = 'black';
+    event.target.style.backgroundColor = setColor();
   });
   return item;
 }
+
 //creates size of squares based on # of squares and spacing to fill full area of grid
 function createSides(sections) {
   const spacing = 1;
@@ -20,8 +21,8 @@ function createSides(sections) {
 
 // Creates Dynamic grid based on the number of rows and columns user requires
 function createGrid() {
-  const rows = parseInt(document.getElementById('rows').value) || 100;
-  const columns = parseInt(document.getElementById('columns').value) || 100;
+  const rows = parseInt(document.getElementById('rows').value) || 10;
+  const columns = parseInt(document.getElementById('columns').value) || 10;
 
   const grid = document.querySelector('.grid');
   grid.innerHTML = ''; //clears grid before creating a new one
@@ -36,6 +37,10 @@ function createGrid() {
   }
 }
 
-function colorBox(hoveredItem) {
-  // hoveredItem.style.backgroundColor = 'black';
+function setColor() {
+  let colorRed = Math.floor(Math.random() * 255);
+  let colorGreen = Math.floor(Math.random() * 255);
+  let colorBlue = Math.floor(Math.random() * 255);
+  let color = `rgb(${colorRed},${colorGreen},${colorBlue})`;
+  return color;
 }
