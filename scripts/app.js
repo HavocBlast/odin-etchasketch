@@ -1,13 +1,16 @@
 function createGridItem() {
   let item = document.createElement('div');
-  item.style.border = '1px solid black';
+  // item.style.border = '1px solid black';
   item.className = 'item';
-  item.setAttribute('onmouseover', 'colorBox()');
+  item.addEventListener('mouseenter', (event) => {
+    event.target.style.backgroundColor = 'black';
+  });
   return item;
 }
 //creates size of squares based on # of squares and spacing to fill full area of grid
 function createSides(sections) {
-  let squareSize = (960 - 10 * (sections - 1)) / sections;
+  const spacing = 1;
+  const squareSize = (960 - spacing * (sections - 1)) / sections;
   let columnString = '';
   for (i = 0; i < sections; i++) {
     columnString += ` ${squareSize}px`;
@@ -17,8 +20,8 @@ function createSides(sections) {
 
 // Creates Dynamic grid based on the number of rows and columns user requires
 function createGrid() {
-  const rows = parseInt(document.getElementById('rows').value) || 10;
-  const columns = parseInt(document.getElementById('columns').value) || 10;
+  const rows = parseInt(document.getElementById('rows').value) || 100;
+  const columns = parseInt(document.getElementById('columns').value) || 100;
 
   const grid = document.querySelector('.grid');
   grid.innerHTML = ''; //clears grid before creating a new one
@@ -31,4 +34,8 @@ function createGrid() {
       grid.appendChild(createGridItem());
     }
   }
+}
+
+function colorBox(hoveredItem) {
+  // hoveredItem.style.backgroundColor = 'black';
 }
